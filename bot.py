@@ -9,7 +9,7 @@ from openai import OpenAI
 
 DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-
+POE_CHANNEL_ID = 1551317813249970277
 ai = OpenAI(api_key=OPENAI_API_KEY)
 
 intents = discord.Intents.default()
@@ -53,7 +53,9 @@ async def on_message(message):
     # Empêche le bot de répondre à lui-même
     if message.author.bot:
         return
-
+# Autorise !poe2 uniquement dans le salon choisi
+if message.channel.id != POE_CHANNEL_ID:
+    return
     # Le bot répond uniquement à !poe
     if not message.content.lower().startswith("!poe"):
         return
