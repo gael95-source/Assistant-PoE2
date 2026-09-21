@@ -55,7 +55,7 @@ async def on_message(message):
         return
     # Autorise !poe2 uniquement dans le salon choisi
     if message.channel.id != POE_CHANNEL_ID:
-    return
+        return
     # Le bot répond uniquement à !poe
     if not message.content.lower().startswith("!poe"):
         return
